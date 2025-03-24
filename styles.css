@@ -12,6 +12,7 @@
     --card_small: 26;
     --card_small2: 23;
     --card_medium: 35;
+    --card_a4: 33;
     --card_large: 60;
     --card_large2: 46;
     --card_rectangle: 18;
@@ -94,6 +95,13 @@ body::-webkit-scrollbar-thumb {
 .link-text {
     display: none;
     margin-left: 1rem;
+}
+
+.footer-txt {
+    display: none;
+    margin-left: 1rem;
+    color: #f5e5b8;
+    margin-top: 45vh;
 }
 
 .nav-link svg {
@@ -181,6 +189,10 @@ body::-webkit-scrollbar-thumb {
     }
 
     .navbar:hover .link-text {
+        display: inline;
+    }
+
+    .navbar:hover .footer-txt {
         display: inline;
     }
 
@@ -291,6 +303,10 @@ body {
 
 .card_medium {
     grid-row-end: span var(--card_medium);
+}
+
+.card_a4 {
+    grid-row-end: span var(--card_a4);
 }
 
 .card_large {
