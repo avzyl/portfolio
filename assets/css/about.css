@@ -49,7 +49,6 @@ a:hover {
 
 section {
     padding-top: 4vh;
-    height: 96vh;
     margin: 0 10rem;
     box-sizing: border-box;
     min-height: fit-content;
@@ -66,6 +65,7 @@ section {
     justify-content: center;
     gap: 5rem;
     height: 80vh;
+    margin-left: 5rem;
 }
 
 .section__pic-container {
@@ -73,6 +73,7 @@ section {
     height: 400px;
     width: 400px;
     margin: auto 0;
+    margin-left: 5rem;
 }
 
 .section__text {
@@ -165,12 +166,14 @@ section {
 
 #about {
     position: relative;
+    height: 90vh;
 }
 
 .about-containers {
     gap: 2rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    margin-left: 5rem;
 }
 
 .about-details-container {
@@ -253,6 +256,10 @@ article .icon {
     cursor: default;
 }
 
+.text-container{
+    margin-left: 5rem;
+}
+
 /* PROJECTS SECTION */
 
 #projects {
@@ -286,7 +293,7 @@ article .icon {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 70vh;
+    min-height: 50vh;
 }
 
 .contact-info-upper-container {
@@ -415,6 +422,10 @@ footer p {
         flex-wrap: wrap;
     }
 
+    .about-containers{
+        margin-left: 0rem;
+    }
+
     .contact-info-container {
         margin: 0;
     }
@@ -454,5 +465,7 @@ footer p {
 
     .text-container {
         text-align: justify;
+        margin-left: 0rem;
     }
+
 }
