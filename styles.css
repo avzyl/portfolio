@@ -277,6 +277,7 @@ body {
     grid-auto-rows: var(--row_increment);
     justify-content: center;
     background-color: black;
+    padding-bottom: 5rem;
 }
 
 .card {
