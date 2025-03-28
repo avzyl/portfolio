@@ -15,6 +15,7 @@
     --card_a4: 33;
     --card_large: 60;
     --card_large2: 46;
+    --card_large3: 40;
     --card_rectangle: 18;
     --card_rectangle2: 15;
     --card_rectangle3: 16;
@@ -316,6 +317,10 @@ body {
 
 .card_large2 {
     grid-row-end: span var(--card_large2);
+}
+
+.card_large3 {
+    grid-row-end: span var(--card_large3);
 }
 
 .card_rectangle {
