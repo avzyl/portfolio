@@ -15,14 +15,14 @@
             <div class="card card_medium">
                 <picture>
                     <source class="image" srcset="assets/img/tech_colosseum_main.webp" type="image/webp">
-                    <img loading=lazy src="assets/img/tech_colosseum_main.jpg">
+                    <img loading=lazy class="thumbnail" src="assets/img/tech_colosseum_main.jpg">
                 </picture>
             </div>
             
             <div class="card card_small2">
                 <picture>
                     <source class="image" srcset="assets/img/Hilux x Vella Layout 2.webp" type="image/webp">
-                    <img loading=lazy src="assets/img/Hilux x Vella Layout 2.png">
+                    <img loading=lazy class="thumbnail" src="assets/img/Hilux x Vella Layout 2.png">
                 </picture>
             </div>
 
@@ -472,7 +472,11 @@
             </div> -->
             
 
-
+            <!-- Modal -->
+            <div class="modal" id="imageModal">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <img id="modalImage" alt="Zoomed Image">
+            </div>
         </div>
     </main>
 
@@ -611,4 +615,6 @@
             </li>
         </ul>
     </nav>
+
+    <script src="script.js"></script>
 </body>
