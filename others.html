@@ -10,24 +10,29 @@
         <div class="pin_container">
             <div class="card card_webpage">
                 <source class="image" srcset="assets/img/digi/CMU_webDesign.webp" type="image/webp">
-                <img src="assets/img/designs/CMU_webDesign.png">
+                <img class="thumbnail" src="assets/img/designs/CMU_webDesign.png">
             </div>
 
             <div class="card card_small2">
                 <source class="image" srcset="assets/img/designs/event-management_access.webp" type="image/webp">
-                <img src="assets/img/designs/event-management_access.png">
+                <img class="thumbnail" src="assets/img/designs/event-management_access.png">
             </div>
 
             <div class="card card_rectangle3">
                 <source class="image" srcset="assets/img/designs/hapag-hapinoy_tkinter.webp" type="image/webp">
-                <img src="assets/img/designs/hapag-hapinoy_tkinter.png">
+                <img class="thumbnail" src="assets/img/designs/hapag-hapinoy_tkinter.png">
             </div>
 
             <div class="card card_webpage">
                 <source class="image" srcset="assets/img/designs/Hask_webDesign.webp" type="image/webp">
-                <img src="assets/img/designs/Hask_webDesign.png">
+                <img class="thumbnail" src="assets/img/designs/Hask_webDesign.png">
             </div>
-
+            
+            <!-- Modal -->
+            <div class="modal" id="imageModal">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <img id="modalImage" alt="Zoomed Image">
+            </div>
         </div>
     </main>
 
@@ -166,4 +171,6 @@
             </li>
         </ul>
     </nav>
+
+    <script src="script.js"></script>
 </body>

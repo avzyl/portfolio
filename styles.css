@@ -12,11 +12,12 @@
     --card_small: 26;
     --card_small2: 23;
     --card_medium: 35;
+    --card_medium2: 38;
     --card_a4: 33;
     --card_large: 60;
     --card_large2: 46;
     --card_large3: 40;
-    --card_rectangle: 18;
+    --card_rectangle: 19;
     --card_rectangle2: 15;
     --card_rectangle3: 16;
     --card_webpage: 14;
@@ -305,6 +306,10 @@ body {
 
 .card_medium {
     grid-row-end: span var(--card_medium);
+}
+
+.card_medium2 {
+    grid-row-end: span var(--card_medium2);
 }
 
 .card_a4 {
