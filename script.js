@@ -1,15 +1,25 @@
 const thumbnails = document.querySelectorAll('.thumbnail');
 const modal = document.getElementById('imageModal');
 const modalImage = document.getElementById('modalImage');
+const modalVideo = document.getElementById('modalVideo');
 const closeModal = document.getElementById('closeModal');
 let zoomLevel = 1;
 let isDragging = false;
 let startX, startY, currentX = 0, currentY = 0;
 
-
 thumbnails.forEach(thumbnail => {
   thumbnail.addEventListener('click', () => {
-    modalImage.src = thumbnail.src;
+    const videoSrc = thumbnail.dataset.video;
+    if (videoSrc) {
+      modalImage.style.display = 'none';
+      modalVideo.style.display = 'block';
+      modalVideo.src = videoSrc;
+    } else {
+      modalVideo.style.display = 'none';
+      modalVideo.src = '';
+      modalImage.src = thumbnail.src;
+      modalImage.style.display = 'block';
+    }
     modal.style.display = 'flex';
     zoomLevel = 1;
     modalImage.style.transform = `scale(${zoomLevel}) translate(0px, 0px)`;
@@ -18,6 +28,7 @@ thumbnails.forEach(thumbnail => {
 
 closeModal.addEventListener('click', () => {
   modal.style.display = 'none';
+  modalVideo.src = '';
 });
 
 modalImage.addEventListener('wheel', (event) => {

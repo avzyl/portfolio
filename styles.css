@@ -14,12 +14,14 @@
     --card_medium: 35;
     --card_medium2: 38;
     --card_a4: 33;
+    --card_a4Landscape: 20;
     --card_large: 60;
     --card_large2: 46;
     --card_large3: 40;
     --card_rectangle: 19;
     --card_rectangle2: 15;
     --card_rectangle3: 16;
+    --card_rectangle4: 18;
     --card_webpage: 14;
 }
 
@@ -316,6 +318,10 @@ body {
     grid-row-end: span var(--card_a4);
 }
 
+.card_a4Landscape {
+    grid-row-end: span var(--card_a4);
+}
+
 .card_large {
     grid-row-end: span var(--card_large);
 }
@@ -340,6 +346,10 @@ body {
     grid-row-end: span var(--card_rectangle3);
 }
 
+.card_rectangle4 {
+    grid-row-end: span var(--card_rectangle4);
+}
+
 .card_webpage {
     grid-row-end: span var(--card_webpage);
 }
@@ -347,33 +357,42 @@ body {
 /*zoom*/
 .thumbnail {
     cursor: pointer;
-  }
+}
 
 .modal {
-display: none;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.8);
-justify-content: center;
-align-items: center;
-z-index: 1000;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal img {
-max-width: 90%;
-max-height: 90%;
-transition: transform 0.3s ease;
+    max-width: 90%;
+    max-height: 90%;
+    transition: transform 0.3s ease;
 }
 
 .close-btn {
-position: absolute;
-top: 10px;
-right: 20px;
-color: white;
-font-size: 30px;
-font-weight: bold;
-cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }
+
+#modalVideo {
+    display: none;
+    width: 90%;
+    height: 90vh; /* 80% of the viewport height */
+    border: none; /* Removes the border for a cleaner look */
+    background-color: none;
+  }
+  
