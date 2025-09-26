@@ -6,7 +6,7 @@ const closeModal = document.getElementById('closeModal');
 const prevBtn = document.getElementById('prevSlide');
 const nextBtn = document.getElementById('nextSlide');
 
-let slides = []; // store current slides for the clicked thumbnail
+let slides = [];
 let currentSlideIndex = 0;
 
 let zoomLevel = 1;
@@ -18,13 +18,13 @@ thumbnails.forEach(thumbnail => {
   thumbnail.addEventListener('click', () => {
     const videoSrc = thumbnail.dataset.video;
     if (videoSrc) {
-      // Show video instead of images
       modalImage.style.display = 'none';
       modalVideo.style.display = 'block';
       modalVideo.src = videoSrc;
       slides = [];
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
     } else {
-      // Get slides list (or just the single image)
       const slidesData = thumbnail.dataset.slides 
         ? JSON.parse(thumbnail.dataset.slides) 
         : [thumbnail.src];
@@ -46,7 +46,6 @@ function showSlide(index) {
   modalImage.style.display = 'block';
   resetZoomAndPosition();
 
-  // 🔑 Hide nav buttons if only one image
   if (slides.length <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -56,34 +55,43 @@ function showSlide(index) {
   }
 }
 
-
-// Reset zoom + drag when switching slides
+// Reset zoom + drag
 function resetZoomAndPosition() {
   zoomLevel = 1;
   currentX = 0;
   currentY = 0;
   modalImage.style.transform = `scale(${zoomLevel}) translate(${currentX}px, ${currentY}px)`;
+  modalImage.style.cursor = 'grab';
 }
 
 // Navigation buttons
-prevBtn.addEventListener('click', () => {
+function showPrev() {
   if (slides.length > 0) {
     currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
     showSlide(currentSlideIndex);
   }
-});
+}
 
-nextBtn.addEventListener('click', () => {
+function showNext() {
   if (slides.length > 0) {
     currentSlideIndex = (currentSlideIndex + 1) % slides.length;
     showSlide(currentSlideIndex);
   }
-});
+}
+
+prevBtn.addEventListener('click', showPrev);
+nextBtn.addEventListener('click', showNext);
+
+// Touch support for nav buttons
+prevBtn.addEventListener('touchstart', (e) => { e.preventDefault(); showPrev(); });
+nextBtn.addEventListener('touchstart', (e) => { e.preventDefault(); showNext(); });
 
 // Close modal
 closeModal.addEventListener('click', () => {
   modal.style.display = 'none';
   modalVideo.src = '';
+  slides = [];
+  resetZoomAndPosition();
 });
 
 // Zoom with scroll wheel
@@ -94,7 +102,7 @@ modalImage.addEventListener('wheel', (event) => {
   modalImage.style.transform = `scale(${zoomLevel}) translate(${currentX}px, ${currentY}px)`;
 });
 
-// Dragging
+// Mouse dragging
 modalImage.addEventListener('mousedown', (event) => {
   isDragging = true;
   startX = event.clientX - currentX;
@@ -119,13 +127,33 @@ modalImage.addEventListener('mouseleave', () => {
   modalImage.style.cursor = 'grab';
 });
 
-// Optional: Keyboard navigation (arrow keys + ESC)
+// Touch dragging
+modalImage.addEventListener('touchstart', (event) => {
+  if (event.touches.length === 1) {
+    isDragging = true;
+    startX = event.touches[0].clientX - currentX;
+    startY = event.touches[0].clientY - currentY;
+  }
+});
+
+modalImage.addEventListener('touchmove', (event) => {
+  if (!isDragging || event.touches.length !== 1) return;
+  currentX = event.touches[0].clientX - startX;
+  currentY = event.touches[0].clientY - startY;
+  modalImage.style.transform = `scale(${zoomLevel}) translate(${currentX}px, ${currentY}px)`;
+});
+
+modalImage.addEventListener('touchend', () => {
+  isDragging = false;
+});
+
+// Keyboard navigation
 document.addEventListener('keydown', (event) => {
   if (modal.style.display === 'flex') {
     if (event.key === 'ArrowRight') {
-      nextBtn.click();
+      showNext();
     } else if (event.key === 'ArrowLeft') {
-      prevBtn.click();
+      showPrev();
     } else if (event.key === 'Escape') {
       closeModal.click();
     }
