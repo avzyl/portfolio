@@ -4,77 +4,57 @@
     <link rel="stylesheet" href="styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
     <title>Lyzza's Art Portfolio</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </head>
 
 <body>
     <main>
         <div class="pin_container">
-            
+            <!-- Kung Ako Lang -->
             <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/tatsulok.webp" alt="USC Days Main Poster">
+                <img loading="lazy" class="thumbnail" 
+                    src="assets/img/writings/kungAkoLangT.webp" 
+                    alt="Kung AKo Lang"
+                    data-slides='["assets/img/writings/kungAkoLangT.webp","assets/img/writings/kALP1.webp","assets/img/writings/kALP2.webp"]'>
             </div>
 
-            <!-- usc days -->
+            <!-- Introduksyon -->
             <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/uscDays/MAIN POSTER.webp" alt="USC Days Main Poster">
+                <img loading="lazy" class="thumbnail" 
+                    src="assets/img/writings/introduksyonT.webp" 
+                    alt="Introduksyon"
+                    data-slides='["assets/img/writings/introduksyonT.webp", "assets/img/writings/introduksyonP1.webp"]'>
             </div>
 
+            <!-- Palaban o Kaduwagan? -->
             <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/uscDays/SIKLABAN NG KARUNUNGAN AT KAALAMAN MAIN POSTER.webp" alt="Siklab Poster">
+                <img loading="lazy" class="thumbnail" 
+                    src="assets/img/writings/palabanOkaduwaganT.webp" 
+                    alt="Palaban o Kaduwagan?"
+                    data-slides='["assets/img/writings/palabanOkaduwaganT.webp", "assets/img/writings/pOKP1.webp"]'>
             </div>
 
+            <!-- Mahal ko pa pala -->
             <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/uscDays/SIKLAB - USC Day 2025.webp" alt="Siklab USC Day 2025">
+                <img loading="lazy" class="thumbnail" 
+                    src="assets/img/writings/mahalKoPaPala.webp" 
+                    alt="Mahal ko pa pala"
+                    data-slides='["assets/img/writings/mahalKoPaPala.webp","assets/img/writings/mKPP.webp"]'>
             </div>
 
+            <!-- Ano ang Sandata ko? -->
             <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/uscDays/MUSIKLABAN POSTER.webp" alt="Musiklaban Poster">
+                <img loading="lazy" class="thumbnail" 
+                    src="assets/img/writings/anoAngSandataKoT.webp" 
+                    alt="Ano ang sandata ko?"
+                    data-slides='["assets/img/writings/anoAngSandataKoT.webp", "assets/img/writings/aASKP1.webp", "assets/img/writings/aASKP2.webp"]'>
             </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/taneo.webp" alt="Taneo Soldier">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/hny.webp" alt="Happy New Year">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/xmas.webp" alt="Christmas Poster">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/maryana.webp" alt="Maryana">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/vision.webp" alt="Vision">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/araquiel.webp" alt="Araquiel">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/crest.webp" alt="Crest">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/boy.webp" alt="Boy Artwork">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/krieala.webp" alt="Krieala">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/meow.webp" alt="Meow">
-            </div>
-
-            <div class="card card_medium">
-                <img loading="lazy" class="thumbnail" src="assets/img/digi/socrates.webp" alt="Socrates">
-            </div>
-
 
             <!-- Modal -->
             <div class="modal" id="imageModal">
@@ -89,7 +69,7 @@
     </main>
 
     <nav class="navbar">
-        <ul class="navbar-nav">
+         <ul class="navbar-nav">
             <li class="logo">
                 <a href="#" class="nav-link">
                     <span class="link-text logo-text">Portfolio</span>
@@ -125,8 +105,8 @@
                 </a>
             </li>
 
-            <li class="nav-item active">
-                <a href="#" class="nav-link">
+            <li class="nav-item">
+                <a href="digitalArt.html" class="nav-link">
                     <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="space-station-moon-alt"
                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                         class="svg-inline--fa fa-space-station-moon-alt fa-w-16 fa-5x">
@@ -159,10 +139,10 @@
                     </svg>
                     <span class="link-text">Videos</span>
                 </a>
-            </li>
-                        
-            <li class="nav-item">
-                <a href="writings.html" class="nav-link">
+            </li>            
+            
+            <li class="nav-item active">
+                <a href="#" class="nav-link">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                         class="svg-inline--fa fa-pen fa-w-16 fa-5x">
@@ -238,4 +218,5 @@
     </nav>
 
     <script src="script.js"></script>
+    <script src="gallery.js"></script>
 </body>

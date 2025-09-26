@@ -422,6 +422,10 @@ footer p {
         flex-wrap: wrap;
     }
 
+    #contact {
+        padding-bottom: 5rem;
+    }
+
     .about-containers{
         margin-left: 0rem;
     }
