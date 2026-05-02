@@ -10,14 +10,14 @@
     <main>
         <section id="profile">
             <div class="section__pic-container">
-                <img src="assets/img/me.png" alt="John Doe profile picture" />
+                <img src="assets/img/me.png" alt="Lyzza Abig's profile picture" />
             </div>
             <div class="section__text">
                 <p class="section__text__p1">Hello, I'm</p>
                 <h1 class="title">Lyzza Abig</h1>
                 <p class="section__text__p2">Multimedia Artist</p>
                 <div class="btn-container">
-                    <button class="btn btn-color-2" onclick="window.open('assets/img/Abig_CV_Aug2025.pdf')">
+                    <button class="btn btn-color-2" onclick="window.open('assets/img/Lyzza Abig.pdf')">
                         Download CV
                     </button>
                     <button class="btn btn-color-1" onclick="location.href='#contact'">
@@ -34,6 +34,19 @@
                 </div>
             </div>
         </section>
+
+        <!-- Slideshow Modal (IG Story style) -->
+        <div id="storyModal" class="story-modal">
+            <span class="close">&times;</span>
+            <div class="modal-slideshow">
+                <img class="modal-slide" id="currentSlide" src="" alt="Slide">
+                <!-- Prev / Next buttons (optional, but good UX) -->
+                <button class="prev" id="prevBtn">&#10094;</button>
+                <button class="next" id="nextBtn">&#10095;</button>
+            </div>
+            <!-- Dots indicator -->
+            <div class="dots-container" id="dotsContainer"></div>
+        </div>
 
         <section id="about">
             <p class="section__text__p1">Get To Know More</p>
@@ -330,4 +343,130 @@
             </li>
         </ul>
     </nav>
+
+    <script>
+        // ----- Slideshow configuration -----
+        const storyImages = [
+            "assets/img/story/titans-1.webp",
+            "assets/img/story/titans-2.webp",
+            "assets/img/story/titans-3.webp",
+            "assets/img/story/nicas-cam.webp",
+            "assets/img/story/usc-day.webp",
+            "assets/img/story/camt-day.webp",
+            "assets/img/story/afk-1.webp",
+            "assets/img/story/afk-2.webp",
+            "assets/img/story/afk-3.webp",
+            "assets/img/story/binondo-1.webp",
+            "assets/img/story/binondo-2.webp",
+            "assets/img/story/sampaguita-42.webp",
+            "assets/img/story/paskolarian.webp",
+            "assets/img/story/rexona.webp",
+            "assets/img/story/tronix.webp",
+            "assets/img/story/rese.webp",
+            "assets/img/story/wolves.webp",
+            "assets/img/story/xentra-1.webp",
+            "assets/img/story/xentra-2.webp"
+        ];
+
+        let currentIndex = 0;
+        const modal = document.getElementById("storyModal");
+        const currentSlideImg = document.getElementById("currentSlide");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const dotsContainer = document.getElementById("dotsContainer");
+
+        // Open modal when profile picture is clicked
+        const profilePic = document.querySelector(".section__pic-container img");
+        profilePic.onclick = function() {
+            currentIndex = 0;
+            modal.style.display = "flex";
+
+            currentSlideImg.classList.remove("active");
+
+            updateSlideAndDots();
+
+            setTimeout(() => {
+                currentSlideImg.classList.add("active");
+            }, 100);
+        }
+
+        // Close modal
+        document.querySelector(".close").onclick = function() {
+            modal.style.display = "none";
+        }
+        modal.onclick = function(e) {
+            if (e.target === modal) modal.style.display = "none";
+        }
+
+        // Navigation
+        function showSlide(index) {
+            if (index < 0) index = storyImages.length - 1;
+            if (index >= storyImages.length) index = 0;
+
+            currentIndex = index;
+
+            // remove animation reset
+            currentSlideImg.classList.remove("active");
+
+            currentSlideImg.src = storyImages[currentIndex];
+
+            // re-trigger animation
+            setTimeout(() => {
+                currentSlideImg.classList.add("active");
+            }, 50);
+
+            updateDotsActive();
+        }
+
+        function updateSlideAndDots() {
+            currentSlideImg.src = storyImages[currentIndex];
+
+            setTimeout(() => {
+                currentSlideImg.classList.add("active");
+            }, 50);
+
+            updateDotsActive();
+        }
+
+        function updateDotsActive() {
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === currentIndex);
+            });
+        }
+
+        prevBtn.onclick = function(e) {
+            e.stopPropagation();
+            showSlide(currentIndex - 1);
+        }
+        nextBtn.onclick = function(e) {
+            e.stopPropagation();
+            showSlide(currentIndex + 1);
+        }
+
+        // Generate dots based on number of images
+        function generateDots() {
+            dotsContainer.innerHTML = "";
+            storyImages.forEach((_, idx) => {
+                const dot = document.createElement("span");
+                dot.classList.add("dot");
+                dot.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    showSlide(idx);
+                });
+                dotsContainer.appendChild(dot);
+            });
+            updateDotsActive();
+        }
+        // generateDots();
+
+        // Optional: keyboard left/right navigation
+        document.addEventListener("keydown", function(e) {
+            if (modal.style.display === "flex") {
+                if (e.key === "ArrowLeft") showSlide(currentIndex - 1);
+                else if (e.key === "ArrowRight") showSlide(currentIndex + 1);
+                else if (e.key === "Escape") modal.style.display = "none";
+            }
+        });
+    </script>
 </body>

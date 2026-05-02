@@ -338,6 +338,212 @@ footer p {
     text-align: center;
 }
 
+/* Modal background */
+.story-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1002;
+    font-family: monospace;
+}
+.close:hover {
+    color: #bbb;
+}
+
+/* Slideshow container */
+.modal-slideshow {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The image */
+.modal-slide {
+    width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+    transform: scale(0.95);
+    opacity: 0.6;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.modal-slide.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Prev / Next buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 50%;
+    user-select: none;
+    transition: 0.2s;
+}
+.prev { left: -50px; }
+.next { right: -50px; }
+.prev:hover, .next:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+/* Dots container */
+/* .dots-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 6px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+.dot.active {
+    background-color: white;
+    width: 20px;
+    border-radius: 10px;
+} */
+
+/* Make profile picture clickable */
+.section__pic-container img {
+    cursor: pointer;
+}
+
+/* ===== iPad Air / medium tablets (820x1180 zone fix) ===== */
+@media (min-width: 800px) and (max-width: 1024px) {
+
+    .modal-slideshow {
+        width: 92%;
+        max-width: 750px;
+    }
+
+    .modal-slide {
+        max-height: 78vh;
+    }
+
+    /* Better positioned arrows for tablet width */
+    .prev {
+        left: -15px;
+        font-size: 26px;
+        background: rgba(0,0,0,0.45);
+    }
+
+    .next {
+        right: -15px;
+        font-size: 26px;
+        background: rgba(0,0,0,0.45);
+    }
+
+    /* Slightly softer scaling effect for tablets */
+    .modal-slide {
+        transform: scale(0.97);
+    }
+
+    .modal-slide.active {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-slide {
+        max-height: 70vh;
+    }
+
+    .prev {
+        left: 10px;
+        font-size: 20px;
+        background: rgba(0,0,0,0.4);
+    }
+
+    .next {
+        right: 10px;
+        font-size: 20px;
+        background: rgba(0,0,0,0.4);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1366px) {
+
+    .story-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .modal-slideshow {
+        width: 90%;
+        max-width: 850px;
+        margin: auto;
+    }
+
+    .modal-slide {
+        max-height: 80vh;
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .prev {
+        left: 15px;
+        font-size: 28px;
+        background: rgba(0,0,0,0.45);
+    }
+
+    .next {
+        right: 15px;
+        font-size: 28px;
+        background: rgba(0,0,0,0.45);
+    }
+}
+
+@media (max-width: 480px) {
+    .close {
+        font-size: 32px;
+        right: 20px;
+    }
+
+    .modal-slide {
+        max-height: 60vh;
+    }
+}
 
 @media screen and (max-width: 1400px) {
     #profile {
